@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro | Agrinho 2025</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('imagens/fundoregistro.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #formContainer {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    #formContainer h2 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: #72EE7B;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 15px 0;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #999;
+    }
+
+    button {
+      background-color: #72EE7B;
+      color: black;
+      padding: 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 18px;
+      font-weight: bold;json
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #56c65f;
+    }
+
+    .botao-voltar {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #72EE7B;
+      color: black;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease;
+      z-index: 999;
+    }
+
+    .botao-voltar:hover {
+      background-color: #56c65f;
+    }
+
+    @media (max-width: 500px) {
+      #formContainer {
+        padding: 30px 20px;
+      }
+
+      input {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="formContainer">
+    <h2>REGISTRE-SE</h2>
+    <form id="registrationForm">
+      <input type="text" id="fullName" placeholder="Nome completo" required>
+      <input type="number" id="age" placeholder="Idade" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <button type="button" id="submitBtn">Enviar</button>
+    </form>
+  </div>
+
+  <!-- Botão Voltar -->
+  <a href="index.html" class="botao-voltar" title="Voltar para a página inicial">⟵ Voltar</a>
+
+  <script>
+    document.getElementById('submitBtn').addEventListener('click', function () {
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const age = document.getElementById('age').value;
+
+      if (!fullName || !email || !password || !age) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      if (parseInt(age) < 13) {
+        alert('A idade mínima para registro é 13 anos.');
+        return;
+      }
+json
+      const userData = { fullName, email, password, age };
+
+      try {
+        let existingData = localStorage.getItem('registrations');
+        let registrations = existingData ? JSON.parse(existingData) : [];
+        registrations.push(userData);
+        localStorage.setItem('registrations', JSON.stringify(registrations));
+        alert('Registro concluído com sucesso!');
+        document.getElementById('registrationForm').reset();
+      } catch (error) {
+        console.error('Erro ao salvar dados:', error);
+        alert('Ocorreu um erro ao salvar seus dados.');
+      }
+    });
+  </script>
+</body>
+</html>
