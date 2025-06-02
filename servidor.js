@@ -1,32 +1,36 @@
 const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 const app = express();
+const PORT = 3000;
 
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
+
+const caminhoArquivo = 'registros.json';
 
 app.post('/registrar', (req, res) => {
-  const newUser = req.body;
+  const novoRegistro = req.body;
 
-  fs.readFile('registros.json', (err, data) => {
+  fs.readFile(caminhoArquivo, 'utf8', (err, data) => {
     let registros = [];
-
-    if (!err && data.length > 0) {
+    if (!err && data) {
       registros = JSON.parse(data);
     }
+    registros.push(novoRegistro);
 
-    registros.push(newUser);
-
-    fs.writeFile('registros.json', JSON.stringify(registros, null, 2), err => {
+    fs.writeFile(caminhoArquivo, JSON.stringify(registros, null, 2), (err) => {
       if (err) {
-        console.error('Erro ao salvar:', err);
-        res.status(500).send('Erro ao salvar');
+        res.status(500).json({ mensagem: 'Erro ao salvar registro.' });
       } else {
-        res.status(200).send('Registrado com sucesso!');
+        res.status(200).json({ mensagem: 'Registro salvo com sucesso!' });
       }
     });
   });
 });
 
-app.listen(3000, () => console.log('Servidor rodando em http://localhost:3000'));
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
+
