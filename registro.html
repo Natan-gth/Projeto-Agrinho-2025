@@ -116,37 +116,48 @@
   <!-- Botão Voltar -->
   <a href="index.html" class="botao-voltar" title="Voltar para a página inicial">⟵ Voltar</a>
 
-  <script>
+<script>
     document.getElementById('submitBtn').addEventListener('click', function () {
-      const fullName = document.getElementById('fullName').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const age = document.getElementById('age').value;
+        const fullName = document.getElementById('fullName').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const age = document.getElementById('age').value;
 
-      if (!fullName || !email || !password || !age) {
-        alert('Por favor, preencha todos os campos.');
-        return;
-      }
+        if (!fullName || !email || !password || !age) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
 
-      if (parseInt(age) < 13) {
-        alert('A idade mínima para registro é 13 anos.');
-        return;
-      }
-json
-      const userData = { fullName, email, password, age };
+        if (parseInt(age) < 13) {
+            alert('A idade mínima para registro é 13 anos.');
+            return;
+        }
 
-      try {
-        let existingData = localStorage.getItem('registros');
-        let registrations = existingData ? JSON.parse(existingData) : [];
-        registrations.push(userData);
-        localStorage.setItem('registrations', JSON.stringify(registros));
-        alert('Registro concluído com sucesso!');
-        document.getElementById('registrationForm').reset();
-      } catch (error) {
-        console.error('Erro ao salvar dados:', error);
-        alert('Ocorreu um erro ao salvar seus dados.');
-      }
+        const userData = { fullName, email, password, age };
+
+        // Envia os dados para o seu servidor Node.js
+        fetch('http://localhost:3000/registrar', { // <-- ATENÇÃO: Verifique a porta do seu servidor
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Resposta do servidor:', data);
+            if (data.mensagem === 'Registro salvo com sucesso!') {
+                alert('Registro concluído com sucesso!');
+                document.getElementById('registrationForm').reset();
+            } else {
+                alert('Erro ao registrar: ' + data.mensagem);
+            }
+        })
+        .catch((error) => {
+            console.error('Erro ao enviar dados para o servidor:', error);
+            alert('Ocorreu um erro ao conectar com o servidor.');
+        });
     });
-  </script>
+</script>
 </body>
 </html>
