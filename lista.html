@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Lista de Registros | Agrinho 2025</title>
     <style>
-        /* Estilos do registro.html copiados e adaptados */
+       
         * {
             margin: 0;
             padding: 0;
@@ -20,8 +20,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Usa min-height para permitir rolagem */
-            padding: 20px; /* Adiciona um padding para conteúdo maior */
+            min-height: 100vh;
+            padding: 20px; 
         }
 
         #listContainer {
@@ -30,7 +30,7 @@
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
             width: 100%;
-            max-width: 600px; /* Aumenta a largura máxima para a lista */
+            max-width: 600px; 
             text-align: center;
         }
 
@@ -41,41 +41,40 @@
             color: #72EE7B;
         }
 
-        /* Estilos para a tabela/lista */
+
         .registro-list {
-            list-style: none; /* Remove marcadores de lista padrão */
-            max-height: 400px; /* Altura máxima para a área de rolagem */
-            overflow-y: auto; /* Adiciona rolagem vertical se a lista for grande */
-            border: 1px solid rgba(114, 238, 123, 0.3); /* Borda sutil */
+            list-style: none; 
+            max-height: 400px;
+            overflow-y: auto; 
+            border: 1px solid rgba(114, 238, 123, 0.3);
             border-radius: 8px;
             padding: 10px;
             margin-bottom: 20px;
         }
 
         .registro-list li {
-            display: flex; /* Para alinhar Nome e Idade */
-            justify-content: space-between; /* Espaça Nome à esquerda e Idade à direita */
+            display: flex; 
+            justify-content: space-between;
             padding: 12px 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador entre itens */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 17px;
             color: #e0e0e0;
             transition: background-color 0.2s ease;
         }
 
         .registro-list li:last-child {
-            border-bottom: none; /* Remove a borda do último item */
+            border-bottom: none;
         }
 
         .registro-list li:hover {
-            background-color: rgba(114, 238, 123, 0.1); /* Efeito hover */
+            background-color: rgba(114, 238, 123, 0.1);
         }
 
         .registro-list li span:first-child {
-            font-weight: bold; /* Nome em negrito */
-            color: #72EE7B; /* Cor do nome */
+            font-weight: bold;
+            color: #72EE7B;
         }
 
-        /* Botão Voltar - Mantido igual ao registro.html */
         .botao-voltar {
             position: fixed;
             bottom: 20px;
@@ -116,17 +115,14 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const registrationsList = document.getElementById('registrationsList');
-
-            // Função para carregar os registros do servidor
             async function loadRegistrations() {
                 try {
-                    const response = await fetch('http://localhost:3000/registros'); // <-- ATENÇÃO: Verifique a porta do seu servidor
+                    const response = await fetch('http://localhost:3000/registros');
                     if (!response.ok) {
                         throw new Error(`Erro HTTP: ${response.status}`);
                     }
-                    const data = await response.json(); // Recebe o array de registros
-
-                    registrationsList.innerHTML = ''; // Limpa a mensagem de carregamento
+                    const data = await response.json(); 
+                    registrationsList.innerHTML = '';
 
                     if (data.length === 0) {
                         registrationsList.innerHTML = '<li style="justify-content: center; color: #ccc;">Nenhum registro encontrado.</li>';
@@ -148,7 +144,6 @@
                 }
             }
 
-            // Carrega os registros quando a página é carregada
             loadRegistrations();
         });
     </script>
