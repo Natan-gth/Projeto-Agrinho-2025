@@ -10,7 +10,6 @@ app.use(bodyParser.json());
 
 const caminhoArquivo = 'registros.json';
 
-// Rota para registrar novos usuários (já existe)
 app.post('/registrar', (req, res) => {
   const novoRegistro = req.body;
 
@@ -21,7 +20,7 @@ app.post('/registrar', (req, res) => {
         registros = JSON.parse(data);
       } catch (e) {
         console.error('Erro ao parsear JSON existente:', e);
-        registros = []; // Se o arquivo estiver corrompido, inicia um array vazio
+        registros = [];
       }
     }
     registros.push(novoRegistro);
@@ -36,14 +35,11 @@ app.post('/registrar', (req, res) => {
   });
 });
 
-// ************************************************
-// NOVA ROTA: Para obter todos os registros
-// ************************************************
 app.get('/registros', (req, res) => {
   fs.readFile(caminhoArquivo, 'utf8', (err, data) => {
     if (err) {
-      if (err.code === 'ENOENT') { // Arquivo não encontrado
-        return res.status(200).json([]); // Retorna array vazio se não houver registros
+      if (err.code === 'ENOENT') {
+        return res.status(200).json([]); 
       }
       console.error('Erro ao ler registros.json:', err);
       return res.status(500).json({ mensagem: 'Erro ao buscar registros.' });
