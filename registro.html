@@ -135,8 +135,8 @@
 
         const userData = { fullName, email, password, age };
 
-        // Envia os dados para o seu servidor Node.js
-        fetch('http://localhost:3000/registrar', { // <-- ATENÇÃO: Verifique a porta do seu servidor
+      
+        fetch('http://localhost:3000/registrar', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
