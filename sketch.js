@@ -12,9 +12,9 @@ function setup() {
   createCanvas(1300, 1300);
   background('white');
 
-  image(fundo, 0, 210, 1300, 1090); // fundo ajustado
-  image(banner, 0, 0, 1300, 300);   // banner ajustado
-  image(exemplo, 480, 435, 280, 280); // qrcode
+  image(fundo, 0, 210, 1300, 1090); 
+  image(banner, 0, 0, 1300, 300);   
+  image(exemplo, 480, 435, 280, 280); 
 
   fill('white');
   stroke(0);
