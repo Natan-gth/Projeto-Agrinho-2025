@@ -136,10 +136,10 @@ json
       const userData = { fullName, email, password, age };
 
       try {
-        let existingData = localStorage.getItem('registrations');
+        let existingData = localStorage.getItem('registros');
         let registrations = existingData ? JSON.parse(existingData) : [];
         registrations.push(userData);
-        localStorage.setItem('registrations', JSON.stringify(registrations));
+        localStorage.setItem('registrations', JSON.stringify(registros));
         alert('Registro concluído com sucesso!');
         document.getElementById('registrationForm').reset();
       } catch (error) {
