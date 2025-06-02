@@ -1,0 +1,21 @@
+Para rodar isso sera preciso do prompt de comando.
+Extrair os arquivos, no terminal digite
+
+cd C:\Users\Nome do usuário\Local que a pasta está\Projeto-Agrinho-2025-main
+
+Após isso, você precisa instalar os pacotes necessários.
+
+Rode "npm init -y" e depois "npm install express cors body-parser"
+
+Com isso feito, pode iniciar o servidor com o comando "node servidor.js"
+
+(Precisa do node para ser rodado.)
+
+Depois é só abrir a pasta, acessar o "index.html" e ver o projeto.
+
+
+
+
+
+
+
