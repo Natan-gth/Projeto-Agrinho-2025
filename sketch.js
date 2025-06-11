@@ -2,6 +2,8 @@ let banner, exemplo, fundo;
 let verificarB;
 let botaoAtivo = true;
 
+// Esse script não é usado mais, em nenhuma ocasião ele será tão útil, essa foi a base de tudo, depois foi convertido para HTML e com algumas correções do CSS.
+
 function preload() {
   banner = loadImage('imagens/banner.png');
   exemplo = loadImage('imagens/qrcodeex.png');
