@@ -3,24 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Agrinho 2025 - Festejando do Campo à Cidade</title>
+  <title>Agrinho 2025 - Linha do Tempo</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <img src="imagens/banner.png" alt="Banner Agrinho 2025" class="banner">
+  <header class="banner">
+    <img src="imagens/banner.png" alt="Banner Agrinho">
   </header>
 
-  <main>
+  <main class="conteudo">
     <h2 class="titulo-linha">Linha do Tempo</h2>
-    <div class="timeline-container">
-      <button id="prevBtn">⟵</button>
-      <div class="timeline" id="timeline">
-        <!-- Eventos gerados dinamicamente -->
+    
+    <section class="slider-container">
+      <div class="slider-track"></div>
+      <input id="slider" type="range" min="0" max="4" step="1" class="slider-thumb">
+      <div class="slider-markers">
+        <span></span><span></span><span></span><span></span><span></span>
       </div>
-      <button id="nextBtn">⟶</button>
-    </div>
+    </section>
+
+    <section id="eventos">
+      </section>
+
+    <section class="bloco bloco-sobre">
+
+      <h2>O que é o Agrinho 2025?</h2>
+      <p>
+        O Agrinho 2025 é um programa de responsabilidade social promovido pelo Sistema FAEP (Federação da Agricultura do Estado do Paraná) em parceria com o SENAR-PR (Serviço Nacional de Aprendizagem Rural). Este programa tem como objetivo promover a educação e a conscientização sobre a importância do agronegócio e suas práticas sustentáveis entre os jovens.
+      </p>
+      <p>
+        O tema para o concurso do Agrinho em 2025 é “Festejando a conexão campo-cidade”. Este tema busca promover ações que integrem as realidades do campo e da cidade, estimular ideias e projetos que ofereçam soluções sustentáveis para os desafios enfrentados por ambas as comunidades, e envolver os jovens em discussões sobre a importância da agricultura e da sustentabilidade.
+      </p>
+      <p>
+        <strong>Objetivos do Programa</strong><br>
+        ● Educação: Incentivar o aprendizado sobre práticas agrícolas e a importância do agronegócio.<br>
+        ● Conscientização: Promover a consciência ambiental e a sustentabilidade.<br>
+        ● Integração: Fomentar a conexão entre as áreas rurais e urbanas, destacando a interdependência entre elas.
+      </p>
+    </section>
   </main>
+
+  <footer class="rodape">
+    © Esse projeto foi feito por um aluno do Colégio Estadual Carlos Gomes para o programa Agrinho 2025.
+  </footer>
 
   <script src="sketch.js"></script>
 </body>
