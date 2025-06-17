@@ -5,105 +5,94 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: url('imagens/fundo.png') no-repeat center center fixed;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('imagens/fundoregistro.png') no-repeat center center fixed;
   background-size: cover;
-  color: white;
-  line-height: 1.6;
-}
-
-header.banner img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-main.conteudo {
-  padding: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  backdrop-filter: brightness(0.85);
-}
-
-.bloco {
-  margin-bottom: 60px;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 12px;
-}
-
-.bloco-informacao {
+  color: #fff;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
-.bloco-informacao .texto {
-  flex: 1;
-  min-width: 300px;
-  margin-right: 30px;
+header .banner {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  margin-bottom: 30px;
 }
 
-.bloco-informacao .imagem img {
-  width: 280px;
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-.botao-verde {
-  display: inline-block;
-  margin: 20px 0;
-  padding: 15px 25px;
-  font-size: 20px;
-  background-color: #72EE7B;
-  color: #000;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.botao-verde:hover {
-  background-color: #56c65f;
-}
-
-.mensagem {
-  font-size: 18px;
-}
-
-.mensagem a {
-  color: #6F6FFF;
-  text-decoration: underline;
-}
-
-.bloco-sobre h2 {
-  font-size: 32px;
+.titulo-linha {
+  font-size: 28px;
+  color: #72EE7B;
   margin-bottom: 20px;
 }
 
-footer.rodape {
-  text-align: center;
-  padding: 20px;
-  font-size: 16px;
-  background-color: rgba(0,0,0,0.7);
+.timeline-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 90%;
+  overflow: hidden;
+  margin-bottom: 50px;
 }
 
-.botao-voltar {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
+.timeline {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+}
+
+.timeline::-webkit-scrollbar {
+  height: 8px;
+}
+
+.timeline::-webkit-scrollbar-thumb {
+  background: #72EE7B;
+  border-radius: 4px;
+}
+
+.evento {
+  min-width: 250px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  padding: 15px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 0 10px #000;
+}
+
+.evento img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.evento h3 {
+  font-size: 18px;
+  color: #72EE7B;
+  margin-bottom: 5px;
+}
+
+.evento p {
+  font-size: 14px;
+}
+
+button#prevBtn, button#nextBtn {
   background-color: #72EE7B;
   color: black;
-  padding: 12px 20px;
+  border: none;
+  padding: 10px 15px;
   border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease;
-  z-index: 999;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.botao-voltar:hover {
+button#prevBtn:hover, button#nextBtn:hover {
   background-color: #56c65f;
 }
