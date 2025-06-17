@@ -151,11 +151,14 @@
         alert('Registro enviado com sucesso!');
         document.getElementById('registrationForm').reset();
       } else {
-        alert('Erro ao enviar o registro. Verifique os dados ou o formulário do Formspree.');
+        response.json().then(data => {
+          console.error('Resposta do Formspree:', data);
+          alert('Erro ao registrar: ' + (data?.error || 'Erro desconhecido'));
+        });
       }
     })
     .catch((error) => {
-      console.error('Erro ao enviar:', error);
+      console.error('Erro ao conectar com o servidor:', error);
       alert('Erro ao conectar com o servidor.');
     });
   });
