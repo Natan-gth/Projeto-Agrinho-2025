@@ -1,65 +1,60 @@
-let banner, exemplo, fundo;
-let verificarB;
-let botaoAtivo = true;
-
-// Esse script não é usado mais, em nenhuma ocasião ele será tão útil, essa foi a base de tudo, depois foi convertido para HTML e com algumas correções do CSS.
-
-function preload() {
-  banner = loadImage('imagens/banner.png');
-  exemplo = loadImage('imagens/qrcodeex.png');
-  fundo = loadImage('imagens/fundo.png');
-}
-
-function setup() {
-  createCanvas(1300, 1300);
-  background('white');
-
-  image(fundo, 0, 210, 1300, 1090); 
-  image(banner, 0, 0, 1300, 300);   
-  image(exemplo, 480, 435, 280, 280); 
-
-  fill('white');
-  stroke(0);
-  strokeWeight(2);
-
-  textSize(35);
-  text("Veja seu registro através", 60, 440);
-  text("do QR code.", 60, 470);
-
-  text("Oque é o agrinho 2025?", 815, 390);
-
-  textSize(23);
-  text("O Agrinho 2025 é um programa de \nresponsabilidade social promovido pelo \nSistema FAEP \n(Federação da Agricultura do Estado \ndo Paraná) \nem parceria com o SENAR-PR \n(Serviço Nacional de Aprendizagem Rural). \nEste programa tem como objetivo promover \na educação e a conscientização sobre a \nimportância do agronegócio e suas práticas \nsustentáveis entre os jovens.", 815, 420);
-
-  text("O tema para o concurso do Agrinho em 2025 é “Festejando a conexão campo-cidade”. Este tema busca \nPromover ações que integrem as realidades do campo e da cidade. \nEstimular ideias e projetos que ofereçam soluções sustentáveis para os desafios enfrentados por ambas as comunidades. \nEnvolver os jovens em discussões sobre a importância da agricultura e da sustentabilidade.", 50, 900);
-
-  text("Objetivos do Programa \nO Agrinho visa: \n ● Educação: Incentivar o aprendizado sobre práticas agrícolas e a importância do agronegócio. \n ● Conscientização: Promover a consciência ambiental e a sustentabilidade. \n ● Integração: Fomentar a conexão entre as áreas rurais e urbanas, destacando a interdependência entre elas.", 50, 1050);
-
-  text("© Esse projeto foi feito por um aluno do Colégio Estadual Carlos Gomes \npara o programa Agrinho 2025.", 50, 1250);
-
-  text("Não está registrado ainda?", 50, 800);
-
-  let link = createA('registro.html','Clique aqui para se registrar!');
-  link.position(340, 777); 
-  link.style('font-size', '24px'); 
-  link.style('color', '#6F6FFF');
-  link.style('text-decoration', 'underline');  
-
-  verificarB = createButton('VERIFICAR-SE');
-  verificarB.size(310, 135);
-  verificarB.position(100, 525);
-  verificarB.style('font-size', '36px');
-  verificarB.style('background-color', '#72EE7B');
-  verificarB.style('color', '#ffffff');
-  verificarB.mousePressed(funcaoDoBotaoAoClicar);
-}
-
-function funcaoDoBotaoAoClicar() {
-  if (botaoAtivo) {
-    botaoAtivo = false;
-    console.log('Botão clicado!');
-    setTimeout(() => {
-      botaoAtivo = true;
-    }, 1000);
+const eventos = [
+  {
+    ano: "1950",
+    titulo: "Festa da Colheita",
+    descricao: "Celebração tradicional realizada em vilarejos rurais do Brasil após a colheita.",
+    imagem: "img1.jpg"
+  },
+  {
+    ano: "1975",
+    titulo: "Expansão das Festas Juninas",
+    descricao: "Festas típicas ganham destaque nas cidades com quadrilhas, barracas e música.",
+    imagem: "img2.jpg"
+  },
+  {
+    ano: "1990",
+    titulo: "Tecnologia no Campo",
+    descricao: "Início da modernização agrícola com máquinas e eventos demonstrativos.",
+    imagem: "img3.jpg"
+  },
+  {
+    ano: "2000",
+    titulo: "Festas Urbanas Temáticas",
+    descricao: "Cidades passam a valorizar a cultura rural em eventos e festas públicas.",
+    imagem: "img4.jpg"
+  },
+  {
+    ano: "2025",
+    titulo: "Agrinho 2025",
+    descricao: "Integração entre o campo e a cidade é celebrada com projetos educacionais.",
+    imagem: "img5.jpg"
   }
+];
+
+function criarEventoCard(evento) {
+  const div = document.createElement('div');
+  div.className = 'evento';
+  div.innerHTML = `
+    <img src="${evento.imagem}" alt="${evento.titulo}">
+    <h3>${evento.ano} - ${evento.titulo}</h3>
+    <p>${evento.descricao}</p>
+  `;
+  return div;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const timeline = document.getElementById('timeline');
+  eventos.forEach(evento => {
+    const card = criarEventoCard(evento);
+    timeline.appendChild(card);
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    timeline.scrollLeft -= 300;
+  });
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    timeline.scrollLeft += 300;
+  });
+});
+
