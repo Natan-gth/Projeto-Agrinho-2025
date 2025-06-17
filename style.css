@@ -143,10 +143,9 @@ main.conteudo {
     background-color: #72EE7B;
 }
 
-/* AUMENTADO: min-height da caixa de eventos */
 #eventos {
     position: relative;
-    min-height: 550px; /* Aumentado para acomodar textos mais longos */
+    min-height: 550px; 
     margin-bottom: 40px;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.6);
@@ -243,9 +242,8 @@ footer.rodape {
         max-width: 100%;
     }
 
-    /* AUMENTADO: min-height da caixa de eventos para telas menores */
     #eventos {
-        min-height: 450px; /* Aumentado para acomodar textos mais longos em telas menores */
+        min-height: 450px;
     }
 
     .evento {
