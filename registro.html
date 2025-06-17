@@ -133,18 +133,14 @@
         return;
       }
 
-      // Pega os registros já salvos, ou um array vazio se não existir
       const registros = JSON.parse(localStorage.getItem('registros')) || [];
 
-      // Adiciona o novo registro
       registros.push({ nome: fullName, idade: age, email: email, senha: password });
 
-      // Salva no localStorage
       localStorage.setItem('registros', JSON.stringify(registros));
 
       alert('Registro salvo localmente!');
 
-      // Limpa o formulário
       this.reset();
     });
   </script>
