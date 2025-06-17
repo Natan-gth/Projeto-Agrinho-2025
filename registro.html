@@ -134,13 +134,13 @@
         const userData = { fullName, email, password, age };
 
       
-        fetch('http://localhost:3000/registrar', { 
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-        })
+fetch('https://formspree.io/f/mdkzdegk', { 
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+})
         .then(response => response.json())
         .then(data => {
             console.log('Resposta do servidor:', data);
