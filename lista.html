@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Lista de Registros | Agrinho 2025</title>
     <style>
-       
         * {
             margin: 0;
             padding: 0;
@@ -40,7 +39,6 @@
             letter-spacing: 1px;
             color: #72EE7B;
         }
-
 
         .registro-list {
             list-style: none; 
@@ -106,7 +104,7 @@
     <div id="listContainer">
         <h2>REGISTROS EXISTENTES</h2>
         <ul id="registrationsList" class="registro-list">
-            <p style="color: #ccc;">Carregando registros...</p>
+            <li style="justify-content: center; color: #ccc;">Carregando registros...</li>
         </ul>
     </div>
 
@@ -115,36 +113,17 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const registrationsList = document.getElementById('registrationsList');
-            async function loadRegistrations() {
-                try {
-                    const response = await fetch('http://localhost:3000/registros');
-                    if (!response.ok) {
-                        throw new Error(`Erro HTTP: ${response.status}`);
-                    }
-                    const data = await response.json(); 
-                    registrationsList.innerHTML = '';
-
-                    if (data.length === 0) {
-                        registrationsList.innerHTML = '<li style="justify-content: center; color: #ccc;">Nenhum registro encontrado.</li>';
-                        return;
-                    }
-
-                    data.forEach(user => {
-                        const listItem = document.createElement('li');
-                        listItem.innerHTML = `
-                            <span>${user.fullName}</span>
-                            <span>${user.age} anos</span>
-                        `;
-                        registrationsList.appendChild(listItem);
-                    });
-
-                } catch (error) {
-                    console.error('Erro ao carregar registros:', error);
-                    registrationsList.innerHTML = `<li style="color: red; justify-content: center;">Erro ao carregar registros: ${error.message}</li>`;
-                }
+            const registros = JSON.parse(localStorage.getItem('registros')) || [];
+            registrationsList.innerHTML = '';
+            if (registros.length === 0) {
+                registrationsList.innerHTML = '<li style="justify-content: center; color: #ccc;">Nenhum registro encontrado.</li>';
+                return;
             }
-
-            loadRegistrations();
+            registros.forEach(user => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${user.fullName}</span><span>${user.age} anos</span>`;
+                registrationsList.appendChild(li);
+            });
         });
     </script>
 </body>
