@@ -104,57 +104,26 @@
 <body>
   <div id="formContainer">
     <h2>REGISTRE-SE</h2>
-    <form id="registrationForm">
-      <input type="text" id="fullName" placeholder="Nome completo" required>
-      <input type="number" id="age" placeholder="Idade" required>
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="password" id="password" placeholder="Senha" required>
-      <button type="button" id="submitBtn">Enviar</button>
+    <form action="https://formspree.io/f/mdkzdegk" method="POST" onsubmit="return validarFormulario()">
+      <input type="text" name="nome" id="fullName" placeholder="Nome completo" required>
+      <input type="number" name="idade" id="age" placeholder="Idade" required>
+      <input type="email" name="email" id="email" placeholder="Email" required>
+      <input type="text" name="senha" id="password" placeholder="Senha" required>
+      <button type="submit">Enviar</button>
     </form>
   </div>
 
   <a href="index.html" class="botao-voltar" title="Voltar para a página inicial">⟵ Voltar</a>
 
   <script>
-    document.getElementById('submitBtn').addEventListener('click', function () {
-      const fullName = document.getElementById('fullName').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const age = document.getElementById('age').value;
-
-      if (!fullName || !email || !password || !age) {
-        alert('Por favor, preencha todos os campos.');
-        return;
+    function validarFormulario() {
+      const idade = document.getElementById("age").value;
+      if (parseInt(idade) < 13) {
+        alert("A idade mínima para registro é 13 anos.");
+        return false;
       }
-
-      if (parseInt(age) < 13) {
-        alert('A idade mínima para registro é 13 anos.');
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append("Nome", fullName);
-      formData.append("Email", email);
-      formData.append("Senha", password);
-      formData.append("Idade", age);
-
-      fetch('https://formspree.io/f/mdkzdegk', {
-        method: 'POST',
-        body: formData,
-      })
-      .then(response => {
-        if (response.ok) {
-          alert('Registro concluído com sucesso!');
-          document.getElementById('registrationForm').reset();
-        } else {
-          alert('Erro ao registrar. Tente novamente.');
-        }
-      })
-      .catch(error => {
-        console.error('Erro ao enviar dados para o servidor:', error);
-        alert('Ocorreu um erro ao conectar com o servidor.');
-      });
-    });
+      return true;
+    }
   </script>
 </body>
 </html>
